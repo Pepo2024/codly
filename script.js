@@ -1,50 +1,170 @@
-﻿// ==========================================
-// 1. إعدادات GSAP (أنيميشن ظهور العناصر)
-// ==========================================
-// ده بيخلي الكلام ينزل من فوق لتحت بشفافية أول ما الموقع يفتح
-gsap.from(".hero-title", { duration: 1.5, y: -50, opacity: 0, ease: "power3.out", delay: 0.5 });
-gsap.from(".hero-subtitle", { duration: 1.5, y: 50, opacity: 0, ease: "power3.out", delay: 0.8 });
-gsap.from(".btn", { duration: 1, scale: 0, opacity: 0, ease: "elastic.out(1, 0.3)", delay: 1.2 });
-gsap.from("header", { duration: 1, y: -100, opacity: 0, ease: "power2.out" });
+// تسجيل إضافة ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 // ==========================================
-// 2. إعدادات Three.js (خلفية 3D تفاعلية)
+// 1. إعدادات قائمة الموبايل
+// ==========================================
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+    });
+});
+
+// ==========================================
+// 2. إعدادات GSAP (أنيميشن الظهور وحل مشكلة القفز)
+// ==========================================
+// استخدام fromTo يمنع العشوائية عند عمل Reload للصفحة
+gsap.fromTo(".hero-title", 
+    { y: 50, opacity: 0 }, 
+    { duration: 1.2, y: 0, opacity: 1, ease: "power3.out", delay: 0.2 }
+);
+gsap.fromTo(".hero-subtitle", 
+    { y: 40, opacity: 0 }, 
+    { duration: 1.2, y: 0, opacity: 1, ease: "power3.out", delay: 0.4 }
+);
+gsap.fromTo(".btn", 
+    { y: 30, opacity: 0 }, 
+    { duration: 1, y: 0, opacity: 1, ease: "power3.out", delay: 0.6 }
+);
+gsap.fromTo("header", 
+    { y: -50, opacity: 0 }, 
+    { duration: 1, y: 0, opacity: 1, ease: "power2.out" }
+);
+
+// ==========================================
+// 3. إعدادات Three.js (خلفية 3D تفاعلية ومحسنة للموبايل)
 // ==========================================
 const canvas = document.querySelector('#bg-canvas');
 const scene = new THREE.Scene();
 
-// إعداد الكاميرا
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-// إعداد الريندر (المُصيّر)
-const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// عمل شكل هندسي (TorusKnot - شكل شبكي معقد)
 const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-// مادة شبكية بلون الموقع عشان تليق مع الديزاين
-const material = new THREE.MeshBasicMaterial({ color: 0x00ffcc, wireframe: true }); 
+// تغيير لون المجسم إلى أزرق غامق / أزرق ملكي بناءً على الطلب
+const material = new THREE.MeshBasicMaterial({ 
+    color: 0x1E3A8A, // أزرق داكن
+    wireframe: true,
+    transparent: true,
+    opacity: 0.4
+}); 
 const torusKnot = new THREE.Mesh(geometry, material);
+
+if (window.innerWidth <= 768) {
+    torusKnot.scale.set(0.6, 0.6, 0.6);
+}
+
 scene.add(torusKnot);
 
-// دالة التحديث المستمر عشان الشكل يلف
 function animate() {
     requestAnimationFrame(animate);
-    
-    // سرعة الدوران
-    torusKnot.rotation.x += 0.005;
-    torusKnot.rotation.y += 0.005;
-    
+    torusKnot.rotation.x += 0.002;
+    torusKnot.rotation.y += 0.002;
     renderer.render(scene, camera);
 }
 animate();
 
-
-// عشان لو المستخدم غير حجم الشاشة (Responsive Canvas)
 window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    if (window.innerWidth <= 768) {
+        torusKnot.scale.set(0.6, 0.6, 0.6);
+    } else {
+        torusKnot.scale.set(1, 1, 1);
+    }
 });
+
+// ==========================================
+// 4. تغيير لون الخلفية عند النزول للأسفل (Scroll Effect)
+// ==========================================
+gsap.to("body", {
+    backgroundColor: "#020617", // لون كحلي قاتم جداً عند النزول
+    scrollTrigger: {
+        trigger: "#about", // يبدأ التغيير لما توصل لقسم من نحن
+        start: "top 70%",
+        end: "top 20%",
+        scrub: true // يخلي تغيير اللون تدريجي مع حركة الماوس
+    }
+});
+
+// ==========================================
+// 5. إعدادات GSAP ScrollTrigger (أنيميشن الأقسام)
+// ==========================================
+gsap.utils.toArray('.section-title').forEach(title => {
+    gsap.fromTo(title, 
+        { y: 50, opacity: 0 },
+        {
+            scrollTrigger: {
+                trigger: title,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1,
+            y: 0,
+            opacity: 1,
+            ease: "power3.out"
+        }
+    );
+});
+
+gsap.utils.toArray('.about-content, .contact-form-container').forEach(box => {
+    gsap.fromTo(box, 
+        { y: 60, opacity: 0 },
+        {
+            scrollTrigger: {
+                trigger: box,
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1,
+            y: 0,
+            opacity: 1,
+            ease: "power3.out"
+        }
+    );
+});
+
+gsap.fromTo('.project-card', 
+    { y: 60, opacity: 0 },
+    {
+        scrollTrigger: {
+            trigger: '.projects-grid',
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+        },
+        duration: 0.8,
+        y: 0,
+        opacity: 1,
+        ease: "power3.out",
+        stagger: 0.2
+    }
+);
+
+// ==========================================
+// 6. منع إعادة تحميل الصفحة عند إرسال الفورم
+// ==========================================
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+        alert('تم إرسال رسالتك بنجاح! شكراً لتواصلك معنا.');
+        contactForm.reset(); 
+    });
+}
