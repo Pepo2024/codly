@@ -3,7 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: "Cairo", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
 }
 
 /* الألوان الجديدة: أزرق غامق جداً للخلفية */
@@ -11,7 +15,7 @@ body {
     background-color: #060B14; 
     color: #ffffff;
     overflow-x: hidden;
-    transition: background-color 0.8s ease; /* انتقال سلس للون الخلفية */
+    transition: background-color 0.1s ease; /* انتقال سلس للون الخلفية */
 }
 
 /* إعدادات خلفية الـ Three.js */
@@ -304,4 +308,42 @@ nav {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
     background-color: #1D4ED8;
+}
+
+.footer{
+    margin-top: 1%;
+}
+
+.facebook-icon, .gmail-icon, .pict{
+    width: 10%;
+    margin-left: 1%;
+    margin-top: 1%;
+    transition: transform 0.2s ease-in-out;
+    /* filter: drop-shadow(0 10px 30px rgba(59, 130, 246, 0.6)); */
+}
+
+.facebook-icon:hover{
+    transform: translateY(-5px);
+    border-color: rgba(59, 130, 246, 0.6);
+    filter: drop-shadow(0 10px 30px rgba(70, 141, 255, 0.707));
+
+    /* margin-top: 1%; */
+}
+.gmail-icon:hover{
+    transform: translateY(-5px);
+    border-color: rgba(14, 57, 127, 0.6);
+    filter: drop-shadow(0 10px 30px rgba(70, 141, 255, 0.707));
+    /* margin-top: 1%; */
+}
+.pict:hover{
+    transform: translateY(-5px);
+    border-color: rgba(14, 57, 127, 0.6);
+    filter: drop-shadow(0 10px 30px rgba(70, 141, 255, 0.707));
+    /* margin-top: 1%; */
+}
+.linkss{
+    text-decoration: none;
+}
+.pict{
+    border-radius: 50%; 
 }
