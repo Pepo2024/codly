@@ -104,18 +104,17 @@ nav {
     text-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
 }
 
-/* القسم الرئيسي (الهيرو) */
+/* القسم الرئيسي (الرئيسية) */
 .hero {
-    min-height: 100vh;
+    min-height: auto; /* تم إلغاء الطول الكامل للشاشة عشان يقرب من القسم اللي تحته */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding: 140px 20px 30px; /* للتحكم في المسافة: الرقم 30 هنا هو المسافة من أسفل */
     opacity: 0; 
     animation: fadeIn 0.1s forwards 0.2s;
-    margin-top: 80px;
 }
 
 @keyframes fadeIn {
@@ -170,14 +169,13 @@ nav {
     border-color: #60A5FA;
 }
 
-/* الأقسام العامة */
+/* الأقسام العامة (مثل قسم من نحن) */
 .section {
-    /* تم إزالة min-height: 100vh لتقليل المسافات الكبيرة بين الأقسام */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px; /* تم تقليل المسافة العلوية والسفلية هنا */
+    padding: 30px 20px; /* للتحكم في المسافة: الرقم 30 هو المسافة من أعلى وأسفل القسم */
     text-align: center;
     position: relative;
     z-index: 2;
@@ -185,7 +183,7 @@ nav {
 
 .section-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 40px; /* تم تقليلها قليلاً */
+    margin-bottom: 30px;
     font-weight: bold;
 }
 
@@ -466,11 +464,11 @@ nav {
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: #3B82F6; }
 
     .hero {
-        margin-top: 60px;
+        padding: 100px 15px 20px; /* تم تقليل المسافة في الموبايل من أسفل (رقم 20px) */
     }
 
     .section {
-        padding: 50px 15px; /* تم تقليل المسافة في الموبايل كمان هنا */
+        padding: 20px 15px; /* تم تقليل المسافة جداً بين الأقسام في الموبايل (رقم 20px) */
     }
 
     .glass-box {
