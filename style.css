@@ -172,12 +172,12 @@ nav {
 
 /* الأقسام العامة */
 .section {
-    min-height: 100vh;
+    /* تم إزالة min-height: 100vh لتقليل المسافات الكبيرة بين الأقسام */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 20px;
+    padding: 60px 20px; /* تم تقليل المسافة العلوية والسفلية هنا */
     text-align: center;
     position: relative;
     z-index: 2;
@@ -185,7 +185,7 @@ nav {
 
 .section-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 50px;
+    margin-bottom: 40px; /* تم تقليلها قليلاً */
     font-weight: bold;
 }
 
@@ -369,7 +369,7 @@ nav {
 
 .footer-list a:hover {
     color: #60A5FA;
-    padding-right: 5px; /* تأثير حركة ناعم عند الوقوف على الرابط */
+    padding-right: 5px; 
 }
 
 .footer-social {
@@ -470,7 +470,7 @@ nav {
     }
 
     .section {
-        padding: 80px 15px;
+        padding: 50px 15px; /* تم تقليل المسافة في الموبايل كمان هنا */
     }
 
     .glass-box {
@@ -478,7 +478,7 @@ nav {
     }
 
     .projects-grid {
-        grid-template-columns: 1fr; /* كارت واحد في الصف للموبايل */
+        grid-template-columns: 1fr; 
     }
 
     /* تعديل الفوتر للموبايل */
