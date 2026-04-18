@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codly | منصة تطوير المواقع والتصاميم الإبداعية</title>
+     <title>Codly | منصة تطوير المواقع والتصاميم الإبداعية</title>
 <meta name="description" content="كودلي هي منصتك المفضلة لبناء مواقع ويب تفاعلية باستخدام أحدث التقنيات مثل Three.js و GSAP. صمم مستقبلك الرقمي معنا.">
-    <link rel="icon" type="image/png" href="1000185365.png">
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <link rel="icon" type="image/png" href="1000185365.png">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 <body id="home-top">
 
@@ -23,7 +22,7 @@
     <header>
         <nav>
             <a href="#home-top" class="logo-container">
-                <img src="1000185365.png" alt="Codly Logo" class="logo-img">
+                <img src="1000185365.png" alt="Codly Logo" class="logo-img" width="45" height="45">
                 <div class="logo">Codly</div>
             </a>
             
@@ -43,9 +42,9 @@
     </header>
 
     <main class="content">
-        <section class="hero">
+        <section class="hero" id="hero-section">
             <h1 class="hero-title">مرحباً بك في <span>Codly</span></h1>
-            <p class="hero-subtitle">نصنع مواقع وتطبيقات عصرية، تفاعلية واحترافية.</p>
+            <p class="hero-subtitle">نصنع مواقع وتطبيقات عصرية، تفاعلية، واحترافية.</p>
             <a href="#projects" class="btn btn-primary">شاهد أعمالنا</a>
         </section>
 
@@ -61,30 +60,30 @@
             <div class="projects-grid">
                 <div class="project-card glass-box">
                     <div class="project-img">
-                        <img src="2.png" alt="برنامج مخازن وفواتير "> 
+                        <img src="2.png" alt="برنامج مخازن وفواتير" loading="lazy" width="300" height="200"> 
                     </div>
                     <h3>برنامج مخازن وفواتير</h3>
                     <p>يقدم هذا البرنامج الكثير من المميزات منها قسم مخازن و الواردات وقسم الموظفين و قسم فواتير </p>
                     <br>
-                    <a target='_blank' href="https://pepo2024.github.io/-1/" class="btn btn-secondary">انتقل إليه</a>
+                    <a href="https://pepo2024.github.io/-1/" class="btn btn-secondary" target="_blank" rel="noopener">انتقل إليه</a>
                 </div>
                 <div class="project-card glass-box">
                     <div class="project-img">
-                        <img src="1.png" alt="متجر الالكتروني"> 
+                        <img src="1.png" alt="متجر الالكتروني" loading="lazy" width="300" height="200"> 
                     </div>
-                    <h3>متجر الكتروني</h3>
-                    <p>بلي وهذا متجر الالكتروني يمكننا ان نعرض اي منتج عليه ويمكن للشخص بمنتهى السهوله يضيف المنتجات والزبون يشتريها </p>
+                    <h3>متجر إلكتروني</h3>
+                    <p>بلي وهذا متجر الالكتروني يمكننا ان نعرض اي منتج عليه ويمكن لي الشخص بي منتها السهوله يضيف المنتجات والزبون يشتريه </p>
                     <br>
-                    <a target='_blank' href="https://pepo2024.github.io/blle/" class="btn btn-secondary">انتقل إليه</a>
+                    <a href="https://pepo2024.github.io/blle/" class="btn btn-secondary" target="_blank" rel="noopener">انتقل إليه</a>
                 </div>
                 <div class="project-card glass-box">
                     <div class="project-img">
-                        <img src="3.png" alt=" موقع وستتم مستشفي"> 
+                        <img src="3.png" alt=" موقع سيستم مستشفي" loading="lazy" width="300" height="200"> 
                     </div>
-                    <h3>موقع ونظام مستشفي </h3>
-                    <p>يمكن لهذا الموقع ان يحجز كشوفات المرضى وتتعرض تلقائيا علي الموقع للدكتور و لما يخلص المريض يدوس  next وياخد كشف جديد </p>
+                    <h3>موقع سيستم مستشفي </h3>
+                    <p>يمكن لهذا الموقع ان يحجز كشوفات المرضى وتتعرض على طول على الموقع للدكتور ولما يخلص المريض يدوس next وياخد كشف جديد </p>
                     <br>
-                    <a target='_blank' href="https://pepo2024.github.io/hospital/" class="btn btn-secondary">انتقل إليه</a>
+                    <a href="https://pepo2024.github.io/hospital/" class="btn btn-secondary" target="_blank" rel="noopener">انتقل إليه</a>
                 </div>
             </div>
         </section>
@@ -95,11 +94,41 @@
                 <form class="contact-form" id="contactForm">
                     <input type="text" placeholder="الاسم" required>
                     <input type="email" placeholder="البريد الإلكتروني" required>
-                    <textarea rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+                    
+                    <div class="rating-input-container">
+                        <span class="rating-label">تقييمك لخدماتنا:</span>
+                        <div class="rating-stars">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5" title="5 نجوم"><i class="fas fa-star"></i></label>
+                            
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="4 نجوم"><i class="fas fa-star"></i></label>
+                            
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="3 نجوم"><i class="fas fa-star"></i></label>
+                            
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="نجمتين"><i class="fas fa-star"></i></label>
+                            
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="نجمة واحدة"><i class="fas fa-star"></i></label>
+                        </div>
+                    </div>
+
+                    <textarea rows="5" placeholder="اكتب رسالتك أو رأيك هنا..." required></textarea>
                     <button type="submit" class="submit-btn">إرسال الرسالة</button>
                 </form>
             </div>
         </section>
+
+        <div class="ticker-section" dir="ltr"> 
+            <div class="ticker-container">
+                <div class="ticker-track" id="ticker-track">
+                    <div class="ticker-item glass-box">جاري تحميل التعليقات...</div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <footer class="footer">
@@ -107,7 +136,7 @@
             
             <div class="footer-brand">
                 <a href="#home-top" class="logo-container">
-                    <img src="1000185365.png" alt="Codly Logo" class="logo-img">
+                    <img src="1000185365.png" alt="Codly Logo" class="logo-img" loading="lazy" width="45" height="45">
                     <div class="logo">Codly</div>
                 </a>
                 <p class="brand-desc">نصنع مواقع وتطبيقات عصرية، تفاعلية، واحترافية تلبي طموحاتك.</p>
@@ -126,32 +155,35 @@
             <div class="footer-social-section">
                 <h3 class="footer-title">وسائل التواصل</h3>
                 <div class="footer-social">
-                    <a href="https://www.facebook.com/share/1CgZndVFCg/" target="_blank" title="Facebook" class="footer-social-icon">
+                    <a href="https://www.facebook.com/share/1CgZndVFCg/" target="_blank" rel="noopener" title="Facebook" class="footer-social-icon">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="mailto:codlynet@gmail.com" target="_blank" title="Email" class="footer-social-icon">
+                    <a href="mailto:codlynet@gmail.com" target="_blank" rel="noopener" title="Email" class="footer-social-icon">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://whatsapp.com/channel/0029Vb7T385DOQIfzJa7od00" target="_blank" title="WhatsApp" class="footer-social-icon">
+                    <a href="https://wa.me/201064661545" target="_blank" rel="noopener" title="WhatsApp" class="footer-social-icon">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <!-- <a href="https://t.me/codly" target="_blank" title="Telegram" class="footer-social-icon">
+                    <a href="https://t.me/codly" target="_blank" rel="noopener" title="Telegram" class="footer-social-icon">
                         <i class="fab fa-telegram"></i>
-                    </a>-->
+                    </a>
                 </div>
             </div>
 
         </div>
 
         <div class="footer-bottom">
-            
             <div class="team-info-footer">
-                <p>Built by <a href="https://www.facebook.com/share/18Xmqo6Yak/" target="_blank" class="team-link">Abanob Milad</a> & <a href="https://philofahim.github.io/-porfolio.org/" target="_blank" class="team-link">Philopateer Fahim</a></p>
+                <p>Built by <a href="https://www.facebook.com/share/18Xmqo6Yak/" target="_blank" rel="noopener" class="team-link">Abanob Milad</a> & <a href="https://philofahim.github.io/-porfolio.org/" target="_blank" rel="noopener" class="team-link">Philopateer Fahim</a></p>
                 <p>جميع الحقوق محفوظة &copy; 2026 Codly.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="script.js"></script>
+    <script type="module" src="firebase-action.js"></script>
 </body>
 </html>
