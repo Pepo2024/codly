@@ -24,6 +24,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -1;
+    pointer-events: none; /* لمنع إعاقة تفاعل المستخدم */
 }
 
 /* الناف بار واللوجو */
@@ -74,7 +75,7 @@ nav {
     cursor: pointer;
     flex-direction: column;
     gap: 6px;
-    z-index: 101;
+    z-index: 200; /* تم التعديل ليصبح أعلى من القائمة نفسها ليظهر الإكس */
 }
 
 .menu-toggle .bar {
@@ -104,15 +105,13 @@ nav {
     text-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
 }
 
-/* ========================================= */
 /* القسم الرئيسي - الهيرو */
-/* ========================================= */
 .hero {
-    min-height: 100vh; /* جعل القسم يأخذ الشاشة بالكامل */
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* توسيط المحتوى عمودياً */
-    align-items: center; /* توسيط المحتوى أفقياً */
+    justify-content: center; 
+    align-items: center; 
     text-align: center;
     padding: 80px 20px 20px; 
     opacity: 0; 
@@ -165,15 +164,13 @@ nav {
     border-color: #60A5FA;
 }
 
-/* ========================================= */
-/* الأقسام العامة (من نحن، مشاريعنا) */
-/* ========================================= */
+/* الأقسام العامة */
 .section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 20px; /* مسافة ممتازة للشاشات الكبيرة */
+    padding: 100px 20px; 
     text-align: center;
     position: relative;
     z-index: 2;
@@ -230,6 +227,7 @@ nav {
     border-radius: 10px;
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #0f172a; /* لتقليل الـ Layout Shift أثناء التحميل */
 }
 
 .project-card h3 {
@@ -291,9 +289,7 @@ nav {
     width: 100%;
 }
 
-/* ========================================= */
 /* الفوتر */
-/* ========================================= */
 .footer {
     background: linear-gradient(to bottom, transparent, rgba(6, 11, 20, 0.95) 20%);
     border-top: 1px solid rgba(59, 130, 246, 0.1);
@@ -364,9 +360,7 @@ nav {
 
 .team-link { color: #3B82F6; font-weight: 600; text-decoration: none; }
 
-/* ========================================= */
-/* التجاوب مع شاشات الموبايل (Responsive) */
-/* ========================================= */
+/* التجاوب مع شاشات الموبايل */
 @media (max-width: 768px) {
     header { padding: 0; }
     nav { padding: 15px 20px; width: 100%; }
@@ -376,7 +370,7 @@ nav {
         position: absolute; top: 0; right: 0; height: 100vh; width: 100%;
         background: rgba(6, 11, 20, 0.98); backdrop-filter: blur(15px);
         flex-direction: column; justify-content: center; align-items: center; gap: 40px;
-        transform: translateX(100%); transition: transform 0.4s ease; z-index: 150;
+        transform: translateX(100%); transition: transform 0.4s ease; z-index: 150; /* أقل من زر المنيو ليظهر فوقها */
     }
 
     .nav-links.active { transform: translateX(0); }
@@ -386,37 +380,175 @@ nav {
     .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: #3B82F6; }
 
-    /* ========================================= */
-    /* المسافات الجديدة للموبايل للفصل بين الأقسام تماماً */
-    /* ========================================= */
-    
     .hero {
         min-height: 100vh;
         padding: 80px 15px 20px;
         justify-content: center; 
     }
 
-    /* هذا هو التعديل الأهم: إضافة padding عالي و margin سفلي للأقسام */
     .section {
-        padding: 90px 20px 40px;  /* مسافة 80 بكسل من الأعلى تفصل العنوان عن القسم السابق */
-        margin-bottom: 150px;      /* مسافة 60 بكسل بالأسفل تفصل القسم عن اللي بعده */
+        padding: 90px 20px 40px;  
+        margin-bottom: 150px;      
     }
 
-    .section-title {
-        margin-bottom: 40px; /* زيادة المسافة بين العنوان والصندوق */
-    }
-
-    .glass-box { 
-        padding: 25px; 
-    }
+    .section-title { margin-bottom: 40px; }
+    .glass-box { padding: 25px; }
     
     .projects-grid { 
         grid-template-columns: 1fr; 
-        gap: 40px; /* زيادة المسافة بين كل مشروع والثاني على الموبايل */
+        gap: 40px; 
     }
 
     .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .footer-title::after { left: 50%; transform: translateX(-50%); }
     .footer-social { justify-content: center; }
     .footer-list a { justify-content: center; }
+}
+
+/* ========================================= */
+/* تصميم التقييم (Star Rating) في الفورم     */
+/* ========================================= */
+.rating-input-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(2, 6, 23, 0.5);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+.rating-label {
+    font-size: 1.1rem;
+    color: #94a3b8;
+}
+
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse; /* مهم جداً لعمل تأثير الـ Hover بشكل صحيح */
+    gap: 5px;
+}
+
+.rating-stars input {
+    display: none; /* إخفاء أزرار الراديو */
+}
+
+.rating-stars label {
+    font-size: 1.5rem;
+    color: #475569; /* لون رمادي للنجوم غير المحددة */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* تأثير الـ Hover والتحديد للنجوم */
+.rating-stars label:hover,
+.rating-stars label:hover ~ label,
+.rating-stars input:checked ~ label {
+    color: #FBBF24; /* لون ذهبي */
+}
+
+.rating-stars label:hover {
+    transform: scale(1.1);
+}
+
+
+/* ========================================= */
+/* تصميم شريط التعليقات (Horizontal Ticker)  */
+/* ========================================= */
+.ticker-section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%); /* لجعله يأخذ عرض الشاشة بالكامل */
+    background: rgba(2, 6, 23, 0.5);
+    border-top: 1px solid rgba(59, 130, 246, 0.1);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    padding: 40px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 50px;
+}
+
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.ticker-track {
+    display: inline-flex;
+    gap: 25px;
+    padding-left: 20px;
+    /* الأنيميشن المسئول عن الحركة */
+    animation: scrollTicker 35s linear infinite;
+    width: max-content;
+}
+
+/* إيقاف الحركة عند وقوف الماوس للقراءة */
+.ticker-track:hover {
+    animation-play-state: paused;
+}
+
+/* تصميم الكارت الاحترافي */
+.ticker-item {
+    min-width: 320px;
+    max-width: 380px;
+    padding: 25px;
+    white-space: normal;
+    text-align: right;
+    direction: rtl;
+    margin: 0;
+    border-right: 4px solid #3B82F6; /* خط جانبي يعطي شكل احترافي */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ticker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+.ticker-item strong {
+    color: #3B82F6;
+    font-size: 1.15rem;
+    margin: 0;
+}
+
+.ticker-stars {
+    display: flex;
+    gap: 2px;
+    font-size: 0.9rem;
+}
+
+.active-star { color: #FBBF24; }
+.inactive-star { color: #475569; }
+
+.ticker-item p {
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@keyframes scrollTicker {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); } 
+}
+
+/* تعديل للموبايل */
+@media (max-width: 768px) {
+    .ticker-section {
+        margin-bottom: 100px;
+    }
+    .ticker-item {
+        min-width: 280px;
+    }
+    .rating-input-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
 }
